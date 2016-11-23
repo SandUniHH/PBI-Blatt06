@@ -1,0 +1,6 @@
+#<struct Struct::GbOptins inputfilename="Library.gb", selecttop=["ACCESSION"], echo=false, search=/NM_021964/, cdscheck=false>
+#<struct Struct::GbOptins inputfilename="Library.gb", selecttop=["BASE COUNT"], echo=false, search=/986/, cdscheck=false>
+#<struct Struct::GbOptins inputfilename="Library.gb", selecttop=["DEFINITION"], echo=false, search=/MMP10/, cdscheck=false>
+#<struct Struct::GbOptins inputfilename="Library.gb", selecttop=["FEATURES"], echo=false, search=/Zinc-dependent/, cdscheck=false>
+#<struct Struct::GbOptins inputfilename="Library.gb", selecttop=["LOCUS"], echo=false, search=/XM_006269/, cdscheck=false>
+#<struct Struct::GbOptins inputfilename="Library.gb", selecttop=["ORIGIN"], echo=false, search=/ctgatgttggtcacttc/, cdscheck=false>
