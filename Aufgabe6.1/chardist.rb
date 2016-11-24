@@ -18,18 +18,6 @@ class CharDist
       self.count_sequence(seq_formatted)
     }
   end
-  
-  def format
-    @dist.sort_by { |k,v| v
-        }
-  end
-  
-  def output
-    @dist.each{ |cc, count|
-    
-      printf("%s\t%d\t%.4f\n", cc, count, count.to_f / @total_chars)
-    }
-  end
 
   def count_sequence(seq_formatted)
     seq_formatted.each_char{ |c|
@@ -37,7 +25,18 @@ class CharDist
       @total_chars += 1
     }
   end
-  
+
+  def format
+    @dist = @dist.sort_by { |k,v| v
+        }
+  end
+
+  def output
+    @dist.each{ |cc, count|
+      printf("%s\t%d\t%.4f\n", cc, count, count.to_f / @total_chars)
+    }
+  end
+
 end
 
 ############
