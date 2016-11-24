@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-
+#
 # Bocher Diedrich Sandmeier
 
 require 'optparse'
@@ -7,25 +7,24 @@ require 'optparse'
 def gb_option_parser(argv)
 
   options = GbOptions.new(nil,nil,false,false)
-
   opts = OptionParser.new
 
   opts.banner = "Usage: #$0 [options] inputfile"
 
-  opts.on('-s', '--selecttop', 'specify at least one Genbank top level descriptor') do |arg|
-    if arg.to_s.match(/[^((LOCUS)|(DEFINITION)|(ORIGIN)|(FEATURES)|(ACCESSION)|(BASE COUNT)|,)]/)
+  opts.on("--selecttop x,y,z", Array, 'specify at least one Genbank top level descriptor') do |ary|
+    if ary.empty?() || !ary.all?() {|ele| ele.match(/LOCUS|DEFINITION|ORIGIN|FEATURES|ACCESSION|BASE COUNT/)}
       stderror(opts)
     end
-
-    options.selecttop = arg
+    options.selecttop = ary
   end
 
-  opts.on('-e', '--echo', 'use echo mode') do
+  opts.on('-e', '--echo', 'use echo mode, cannot be used together with search mode') do
     options.echo = true
   end
 
-  opts.on('-s', '--search', 'use search mode using the given \n regular expression: --search <regexp>') do |arg|
-    options.search = arg
+  opts.on('-s', '--search [regexp]', 'use search mode using the given regular expression:
+          --search <regexp>. Cannot be used together with echo mode') do |arg|
+    options.search = Regexp.new(arg)
   end
 
   not_parsed = opts.parse(argv)
@@ -34,7 +33,7 @@ def gb_option_parser(argv)
     stderror(opts)
   end
 
-  options.inputfile = rest[0]
+  options.inputfilename = not_parsed[0]
 
   return options
 end

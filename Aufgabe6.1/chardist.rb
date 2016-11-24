@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-
+#
 # Bocher Diedrich Sandmeier
 
 require './readfile.rb'
